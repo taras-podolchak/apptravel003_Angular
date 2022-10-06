@@ -19,7 +19,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Running unit tests
 
-[![Angular - Tests](https://github.com/taras-podolchak/apptravel003_Angular/actions/workflows/angular-test-sonar.yml/badge.svg)](https://github.com/taras-podolchak/apptravel003_Angular/actions/workflows/angular-test-sonar.yml)
+[![Angular - Tests](https://github.com/taras-podolchak/apptravel003_Angular/actions/workflows/angular-test-sonar.yml/badge.svg?branch=develop)](https://github.com/taras-podolchak/apptravel003_Angular/actions/workflows/angular-test-sonar.yml)
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
