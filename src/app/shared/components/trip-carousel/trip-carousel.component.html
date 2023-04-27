@@ -1,0 +1,65 @@
+<p>trip-carousel works!</p>
+
+<div class="section" id="carousel">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 ml-auto mr-auto text-center">
+        <h2 class="title">Eventos disponibles</h2>
+        <div *ngIf="!isAdmin()">
+          <p class="description">Aqui puedes encontrar los eventos mas adecuados para tu alma. Cada evento
+            contiene diferentes actividades que se van a exsponer durante el viaje. Cada evento tiene sus
+            fechas
+            fijas y no se va a modificara durante el viaje.</p>
+        </div>
+      </div>
+    </div>
+    <br/>
+    <div class="row justify-content-center">
+      <div class="col-md-8 mr-auto ml-auto">
+        <div class="card mb-10">
+          <ngb-carousel>
+            <ng-template ngbSlide *ngFor="let trip of trips | async; let i = index">
+              <img src="./assets/img/images/eventos/{{i}}.jpg" alt="Random first slide"
+                   (click)="getTripDetail(trip.title)">
+              <div class="carousel-caption">
+                <div class="bg-light p-2  text-dark" style="--bs-bg-opacity: .7;">
+                  <h4>{{ trip.title }}</h4>
+                  <hr/>
+                  <h5>Nivel {{ trip.level }}</h5>
+                  <h6>Salida {{ trip.oneWayTrip }} - {{ trip.returnTrip }}</h6>
+                  <h6>Transporte: {{trip.transportType}}</h6>
+                  <h5>Precio {{ trip.price }}€</h5>
+                  <button type="button" class="btn btn-outline-default btn-round" placement="right"
+                          ngbTooltip="Pulsa para ver todos los datos sobre el evento y tambien las
+                          actividades disponibles con las personas inscritas"
+                          (click)="getTripDetail(trip.title)">Mas informacion sobre el evento
+                  </button>
+
+                  <div class="row ">
+                    <div class="col" *ngIf="isAdmin()">
+                      <button type="button" class="btn btn-outline-default btn-round"
+                              [routerLink]="['/admin/editEvent',trip.title]">Modificar evento
+                      </button>
+                    </div>
+                    <div class="col" *ngIf="isAdmin()">
+                      <button type="button" class="btn btn-outline-default btn-round"
+                              (click)="deleteTrip(trip.title)">Eliminar evento
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-carousel>
+        </div>
+        <div class="col" *ngIf="isAdmin()">
+          <div class="d-grid gap-2">
+            <button class="btn btn-warning" type="button" [routerLink]="['/admin/createEvent']">
+              Crear un nuevo evento
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

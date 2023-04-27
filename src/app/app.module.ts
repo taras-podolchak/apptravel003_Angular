@@ -1,10 +1,13 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {TripModule} from "./trip/trip/trip.module";
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {HttpClientModule} from "@angular/common/http";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastNoAnimationModule, ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -14,9 +17,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     AppRoutingModule,
     TripModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    ToastNoAnimationModule.forRoot()
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
