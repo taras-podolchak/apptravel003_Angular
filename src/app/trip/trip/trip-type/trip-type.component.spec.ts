@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TripTypeComponent } from './trip-type.component';
+import {TripTypeComponent} from './trip-type.component';
 
 describe('TripTypeComponent', () => {
   let component: TripTypeComponent;
@@ -8,9 +8,9 @@ describe('TripTypeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TripTypeComponent ]
+      declarations: [TripTypeComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(TripTypeComponent);
     component = fixture.componentInstance;
