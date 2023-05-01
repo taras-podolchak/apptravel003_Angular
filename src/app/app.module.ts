@@ -20,7 +20,10 @@ import {ToastNoAnimationModule, ToastrModule} from 'ngx-toastr';
     NgbModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right'
+    }),
     ToastNoAnimationModule.forRoot()
 
   ],

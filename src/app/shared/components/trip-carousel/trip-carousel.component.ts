@@ -16,7 +16,7 @@ export class TripCarouselComponent implements OnInit {
   constructor(
     //  public location: Location,
     private tripService: TripService,
-    private toastr: ToastrService
+    private toast: ToastrService
   ) {
   }
 
@@ -44,9 +44,9 @@ export class TripCarouselComponent implements OnInit {
 
   deleteTrip(title: string) {
     /*  return this.tripService.deleteTrip('' + title).then((() => {
-        this.toastr.warning('El evento eliminado con exito!', 'Evento eliminado!');
+        this.toast.warning('El evento eliminado con exito!', 'Evento eliminado!');
       })).catch(error => {
-        this.toastr.error(error, 'Error a la hora de eliminar el evento!');
+        this.toast.error(error, 'Error a la hora de eliminar el evento!');
       });*/
   }
 }
