@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {EMPTY, Observable, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {Error} from '../model/error.model';
+import {ToastrService} from "ngx-toastr";
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,7 @@ export class HttpService {
   private errorNotification: string | undefined;
 
   constructor(private http: HttpClient,
-              //  private snackBar: MatSnackBar,
+              private toast: ToastrService,
               private router: Router) {
     this.resetOptions();
   }
@@ -127,9 +128,7 @@ export class HttpService {
 
   private extractData(response: any): any {
     if (this.successfulNotification) {
-      /*   this.snackBar.open(this.successfulNotification, '', {
-           duration: 2000
-         });*/
+      this.toast.warning(this.successfulNotification, '');
       this.successfulNotification = undefined;
     }
     const contentType = response.headers.get('content-type');
@@ -147,10 +146,10 @@ export class HttpService {
 
   private showError(notification: string): void {
     if (this.errorNotification) {
-      //    this.snackBar.open(this.errorNotification, 'Error', {duration: 5000});
+      this.toast.error(this.errorNotification, 'Error');
       this.errorNotification = undefined;
     } else {
-      //  this.snackBar.open(notification, 'Error', {duration: 5000});
+      this.toast.error(notification, 'Error');
     }
   }
 
