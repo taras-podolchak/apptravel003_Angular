@@ -1,0 +1,82 @@
+<p>trip-detail works!</p>
+
+<div #detail class="container" *ngIf="(trip | async) as trip">
+
+  <div class="section ">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+          <h2 class="title">{{ trip.title}}</h2>
+          <h4>Nivel - {{ trip.level }}</h4>
+          <h4>Precio - {{ trip.price }}</h4>
+          <img class="img-fluid" src="./assets/img/images/eventos/{{trip.photoTrip}}.jpg">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div id="about-team-EVENTO-INFO">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="title-section">
+              <h3>Descripcion completa sobre el evento</h3>
+            </div>
+            <p>General: <br> {{trip.general}}</p>
+            <p>Recommendation: <br>{{trip.recommendation}}</p>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="progress-bars">
+              <div class="p-bar">
+                <div class="progress-meta">
+                  <h6 class="progress-title">Complejidad</h6>
+                  <h6 class="progress-value">75%</h6>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar bg-warning" role="progressbar" aria-label="Warning example"
+                       style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <hr/>
+              <div class="p-bar">
+                <div class="progress-meta">
+                  <h6 class="progress-title">Altitud</h6>
+                  <h6 class="progress-value">90%</h6>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar bg-danger" role="progressbar" aria-label="Danger example" style="width: 90%"
+                       aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <hr/>
+              <div class="p-bar">
+                <div class="progress-meta">
+                  <h6 class="progress-title">Desnivel</h6>
+                  <h6 class="progress-value">50%</h6>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar bg-info" role="progressbar" aria-label="Info example" style="width: 50%"
+                       aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <hr/>
+
+              <div class="p-bar">
+                <div class="progress-meta">
+                  <h6 class="progress-title">Humedad</h6>
+                  <h6 class="progress-value">27%</h6>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar bg-success" role="progressbar" aria-label="Success example"
+                       style="width: 27%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <hr/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

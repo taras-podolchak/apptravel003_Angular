@@ -18,8 +18,8 @@
       <div class="col-md-8 mr-auto ml-auto">
         <div class="card mb-10">
           <ngb-carousel>
-            <ng-template ngbSlide *ngFor="let trip of trips | async; let i = index">
-              <img src="./assets/img/images/eventos/{{i}}.jpg" alt="Random first slide"
+            <ng-template ngbSlide *ngFor="let trip of trips | async;">
+              <img src="./assets/img/images/eventos/{{trip.photoTrip}}.jpg" alt="Random first slide"
                    (click)="showTripDetail(trip.title)">
               <div class="carousel-caption">
                 <div class="bg-light p-2  text-dark" style="--bs-bg-opacity: .7;">

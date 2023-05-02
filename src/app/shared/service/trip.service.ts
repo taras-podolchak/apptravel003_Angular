@@ -18,18 +18,16 @@ export class TripService {
       .get(EndPoints.TRIPS);
   }
 
-  getByTypeTrip(tripTypeSelected: number) {
+  getByTypeTrip(tripTypeSelected: number): Observable<any> {
     return this.httpService
       .param("typeTrip", tripTypeSelected.toString())
       .get(EndPoints.TYPE_TRIP);
   }
 
-  /*
-    getTripByTitle(mobile: number, totalPurchase: number) : Observable<Trip>{
-      return this.httpService
-        .param('totalPurchase', totalPurchase.toString())
-        .get(EndPoints.POINTS + '/' + mobile + TripService.APPLICABLE);
-    }
-  */
 
+  getTripByTitle(title: string): Observable<Trip> {
+    return this.httpService
+      .param("title", title)
+      .get(EndPoints.TRIP_TITLE);
+  }
 }

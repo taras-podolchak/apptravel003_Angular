@@ -3,14 +3,17 @@ import {CommonModule} from '@angular/common';
 import {TripCarouselComponent} from './components/trip-carousel/trip-carousel.component';
 import {RouterLink} from "@angular/router";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { TripDetailComponent } from './components/trip-detail/trip-detail.component';
 
 
 @NgModule({
   declarations: [
-    TripCarouselComponent
+    TripCarouselComponent,
+    TripDetailComponent
   ],
   exports: [
-    TripCarouselComponent
+    TripCarouselComponent,
+    TripDetailComponent
   ],
   imports: [
     CommonModule,
