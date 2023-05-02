@@ -1,15 +1,15 @@
 <p>trip-detail works!</p>
 
-<div #detail class="container" *ngIf="(trip | async) as trip">
+<div #detail class="container" *ngIf="(tripSelected | async) as tripSelected">
 
   <div class="section ">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-8 ml-auto mr-auto text-center">
-          <h2 class="title">{{ trip.title}}</h2>
-          <h4>Nivel - {{ trip.level }}</h4>
-          <h4>Precio - {{ trip.price }}</h4>
-          <img class="img-fluid" src="./assets/img/images/eventos/{{trip.photoTrip}}.jpg">
+          <h2 class="title">{{ tripSelected.title}}</h2>
+          <h4>Nivel - {{ tripSelected.level }}</h4>
+          <h4>Precio - {{ tripSelected.price }}</h4>
+          <img class="img-fluid" src="./assets/img/images/eventos/{{tripSelected.photoTrip}}.jpg">
         </div>
       </div>
     </div>
@@ -23,8 +23,8 @@
             <div class="title-section">
               <h3>Descripcion completa sobre el evento</h3>
             </div>
-            <p>General: <br> {{trip.general}}</p>
-            <p>Recommendation: <br>{{trip.recommendation}}</p>
+            <p>General: <br> {{tripSelected.general}}</p>
+            <p>Recommendation: <br>{{tripSelected.recommendation}}</p>
           </div>
           <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="progress-bars">

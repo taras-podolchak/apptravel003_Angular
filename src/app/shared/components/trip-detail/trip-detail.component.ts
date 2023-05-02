@@ -1,6 +1,5 @@
 import {Component, ElementRef, Input, OnInit, SimpleChanges, ViewChild} from '@angular/core';
-import {TripService} from "../../service/trip.service";
-import {Observable, of, timer} from "rxjs";
+import {Observable, timer} from "rxjs";
 import {Trip} from "../../model/trip.model";
 
 @Component({
@@ -10,23 +9,18 @@ import {Trip} from "../../model/trip.model";
 })
 export class TripDetailComponent implements OnInit {
 
-  @Input() tripTitleSelected!: string;
+  @Input() tripSelected: Observable<Trip>;
   @ViewChild("detail") MyProp: ElementRef;
 
-  trip: Observable<Trip> = of(null);
-
-  constructor(
-    private tripService: TripService,
-  ) {
+  constructor() {
   }
 
   ngOnInit(): void {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['tripTitleSelected']) {
+    if (changes['tripSelected']) {
       this.ngAfterViewInit();
-      this.trip = this.tripService.getTripByTitle(this.tripTitleSelected);
     }
   }
 

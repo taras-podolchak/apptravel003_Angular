@@ -10,8 +10,8 @@ import {Trip} from "../../shared/model/trip.model";
 })
 export class TripComponent implements OnInit {
 
-  tripTitleSelected!: string;
   trips: Observable<Trip[]>;
+  tripSelected: Observable<Trip>;
 
   constructor(
     private tripService: TripService,
@@ -22,11 +22,11 @@ export class TripComponent implements OnInit {
   }
 
   showAvailableTrips(event: number): void {
-    this.tripTitleSelected = null;
+    this.tripSelected = null;
     this.trips = this.tripService.getByTypeTrip(event);
   }
 
   showTripDetail(event: string): void {
-    this.tripTitleSelected = event;
+    this.tripSelected = this.tripService.getTripByTitle(event);
   }
 }
