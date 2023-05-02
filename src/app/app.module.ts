@@ -24,7 +24,7 @@ import {ToastNoAnimationModule, ToastrModule} from 'ngx-toastr';
       timeOut: 3000,
       positionClass: 'toast-bottom-right'
     }),
-    ToastNoAnimationModule.forRoot()
+    ToastNoAnimationModule
 
   ],
   providers: [],

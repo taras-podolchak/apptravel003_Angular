@@ -14,20 +14,22 @@
         <div class="">
           <h3 class="title">¿Que estas buscando?</h3>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
-                   checked>
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="0"
+                   [(ngModel)]="selectedOption">
             <label class="form-check-label" for="exampleRadios1">Eventos de un dia</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="1"
+                   [(ngModel)]="selectedOption">
             <label class="form-check-label" for="exampleRadios2">Eventos de fin de semana</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="2"
+                   [(ngModel)]="selectedOption">
             <label class="form-check-label" for="exampleRadios3">Aventuras mas largas</label>
           </div>
         </div>
-        <button class="btn btn-danger btn-block btn-round" (click)="showTrip()">Mostrar eventos</button>
+        <button class="btn btn-danger btn-block btn-round" (click)="showCarouselComponent()">Mostrar eventos</button>
       </div>
       <h6 class=" category-absolute ml-auto mr-auto">Creado por
         <a href="https://www.linkedin.com/in/taras-podolchak/" target="_blank">

@@ -1,4 +1,7 @@
 <p>trip works!</p>
-<app-trip-type></app-trip-type>
 
-<app-trip-carousel></app-trip-carousel>
+<app-trip-type (tripTypeSelected)="showAvailableTrips($event)"></app-trip-type>
+
+<ng-container *ngIf="tripTypeSelected">
+  <app-trip-carousel [tripTypeSelected]="tripTypeSelected"></app-trip-carousel>
+</ng-container>
