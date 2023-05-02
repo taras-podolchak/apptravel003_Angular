@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8 ml-auto mr-auto text-center">
-        <h2 class="title">{{typeTrips[tripTypeSelected]}}</h2>
+        <h2 class="title">{{typeTrips[(trips | async)?.at(0)?.typeTrip]}}</h2>
         <div *ngIf="!isAdmin()">
           <p class="description">Aqui puedes encontrar los eventos mas adecuados para tu alma. Cada evento
             contiene diferentes actividades que se van a exsponer durante el viaje. Cada evento tiene sus

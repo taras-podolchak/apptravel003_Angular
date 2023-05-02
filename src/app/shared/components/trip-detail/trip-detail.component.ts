@@ -1,7 +1,6 @@
 import {Component, ElementRef, Input, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {TripService} from "../../service/trip.service";
-import {Observable, of} from "rxjs";
-import {ToastrService} from "ngx-toastr";
+import {Observable, of, timer} from "rxjs";
 import {Trip} from "../../model/trip.model";
 
 @Component({
@@ -23,14 +22,19 @@ export class TripDetailComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  ngAfterViewInit() {
-    if (this.MyProp) {
-      this.MyProp.nativeElement.scrollIntoView({behavior: "smooth", block: "start"});
-    }
-  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tripTitleSelected']) {
+      this.ngAfterViewInit();
       this.trip = this.tripService.getTripByTitle(this.tripTitleSelected);
     }
+  }
+
+  ngAfterViewInit() {
+    timer(100).subscribe(() => {
+      if (this.MyProp) {
+        this.MyProp.nativeElement.scrollIntoView({behavior: "smooth", block: "start"});
+      }
+    });
   }
 }

@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {Observable} from "rxjs";
+import {TripService} from "../../shared/service/trip.service";
+import {Trip} from "../../shared/model/trip.model";
 
 @Component({
   selector: 'app-trip',
@@ -7,10 +10,12 @@ import {Component, OnInit} from '@angular/core';
 })
 export class TripComponent implements OnInit {
 
-  tripTypeSelected!: number;
   tripTitleSelected!: string;
+  trips: Observable<Trip[]>;
 
-  constructor() {
+  constructor(
+    private tripService: TripService,
+  ) {
   }
 
   ngOnInit(): void {
@@ -18,10 +23,10 @@ export class TripComponent implements OnInit {
 
   showAvailableTrips(event: number): void {
     this.tripTitleSelected = null;
-    this.tripTypeSelected = event;
+    this.trips = this.tripService.getByTypeTrip(event);
   }
 
-  showTripDetail(event: string) {
+  showTripDetail(event: string): void {
     this.tripTitleSelected = event;
   }
 }

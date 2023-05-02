@@ -7,9 +7,7 @@
         <img src="assets/img/angular2-logo.png" alt="">
       </div>
       <h1 class="title">Encuentra el evento que mas te guste!</h1>
-
       <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); "></div>
-
       <div class="card card-register mx-auto">
         <div class="">
           <h3 class="title">¿Que estas buscando?</h3>
@@ -29,14 +27,15 @@
             <label class="form-check-label" for="exampleRadios3">Aventuras mas largas</label>
           </div>
         </div>
-        <button [disabled]="!selectedOption" class="btn btn-danger btn-block btn-round" (click)="showCarouselComponent()">Mostrar eventos</button>
+        <button [disabled]="!selectedOption" class="btn btn-danger btn-block btn-round"
+                (click)="showCarouselComponent()">Mostrar eventos
+        </button>
       </div>
       <h6 class=" category-absolute ml-auto mr-auto">Creado por
         <a href="https://www.linkedin.com/in/taras-podolchak/" target="_blank">
           <img src="assets/img/faces/cara_Taras_Podolchak.png" class="creative-tim-logo"> Taras Podolchak
         </a>
       </h6>
-
     </div>
   </div>
 </div>
