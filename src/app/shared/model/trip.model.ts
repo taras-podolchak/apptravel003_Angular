@@ -15,6 +15,6 @@ export interface Trip {
   safety: string;
   oneWayTrip: number;
   returnTrip: number;
-  activityEntityList?: Activity[];
-  userEntityList?: User[];
+  activityList: Activity[];
+  userList: User[];
 }
