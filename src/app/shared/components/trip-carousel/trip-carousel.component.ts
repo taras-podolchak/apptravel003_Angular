@@ -1,7 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
 import {TripService} from "../../service/trip.service";
 import {Observable, of} from "rxjs";
-import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-trip-carousel',
@@ -10,22 +9,31 @@ import {ToastrService} from "ngx-toastr";
 })
 export class TripCarouselComponent implements OnInit {
 
-  @Output() tripSelected = new EventEmitter();
+  @Input() tripTypeSelected!: number;
+  @Output() tripSelected: EventEmitter<string> = new EventEmitter();
+
   trips: Observable<any> = of([]);
+  typeTrips: string[] = [
+    "Eventos de un dia",
+    "Eventos de finde de semana",
+    "Aventuras mas largas"];
 
   constructor(
-    //  public location: Location,
     private tripService: TripService,
-    private toast: ToastrService
   ) {
   }
 
   ngOnInit(): void {
-    this.trips = this.tripService.getAll();
   }
 
-  getTripDetail(idEve: string): void {
-    //this.tripSelected.emit(idEve);
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['tripTypeSelected']) {
+      this.trips = this.tripService.getByTypeTrip(this.tripTypeSelected);
+    }
+  }
+
+  showTripDetail(title: string): void {
+    this.tripSelected.emit(title);
   }
 
   isAdmin() {

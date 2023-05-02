@@ -5,6 +5,7 @@ import {TripRoutingModule} from './trip-routing.module';
 import {TripComponent} from './trip.component';
 import {TripTypeComponent} from './trip-type/trip-type.component';
 import {SharedModule} from "../../shared/shared.module";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {SharedModule} from "../../shared/shared.module";
   imports: [
     CommonModule,
     TripRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class TripModule {
