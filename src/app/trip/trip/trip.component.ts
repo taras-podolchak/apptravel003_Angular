@@ -8,6 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class TripComponent implements OnInit {
 
   tripTypeSelected!: number;
+  tripTitleSelected!: string;
 
   constructor() {
   }
@@ -16,6 +17,11 @@ export class TripComponent implements OnInit {
   }
 
   showAvailableTrips(event: number): void {
+    this.tripTitleSelected = null;
     this.tripTypeSelected = event;
+  }
+
+  showTripDetail(event: string) {
+    this.tripTitleSelected = event;
   }
 }
