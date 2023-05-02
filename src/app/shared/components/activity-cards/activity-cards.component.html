@@ -1,0 +1,48 @@
+<p>activity-cards works!</p>
+
+<section class="container">
+  <div class="section ">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+          <h2 class="title">Este evento contiene
+            {{(tripSelected|async)?.activityList?.length || '0' }}
+            actividades
+          </h2>
+          <!--foto-->
+        </div>
+      </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col-4" *ngFor="let activity of (tripSelected|async)?.activityList;">
+        <div class="card h-25">
+          <a href="{{activity.wikiloc}}" target="_blank">
+            <img class="card-img-top" src="./assets/img/images/actividades/{{activity.photoActivity}}.jpg"
+                 alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{ activity.subtitle }}</h5>
+              <h6>Tipo
+                {{ activity.typeActivity }}</h6>
+              <h6>Nivel
+                {{ activity.slope }}</h6>
+              <h6>Desnivel
+                {{ activity.complexity }}m</h6>
+              <h6>Disctancia
+                {{ activity.distance }}km</h6>
+              <h6>Horas
+                {{ activity.hoursTotal }}h</h6>
+              <h6>Salida
+                {{ activity.dateDeparture }}</h6>
+              <h6>Llegada
+                {{ activity.dateArrival }}</h6>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">{{activity.description}}</small>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
