@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
 import {TripService} from "../../service/trip.service";
 import {Observable, of} from "rxjs";
 
@@ -11,6 +11,7 @@ export class TripCarouselComponent implements OnInit {
 
   @Input() tripTypeSelected!: number;
   @Output() tripSelected: EventEmitter<string> = new EventEmitter();
+  @ViewChild("carousel") MyProp: ElementRef;
 
   trips: Observable<any> = of([]);
   typeTrips: string[] = [
@@ -29,6 +30,13 @@ export class TripCarouselComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tripTypeSelected']) {
       this.trips = this.tripService.getByTypeTrip(this.tripTypeSelected);
+      this.ngAfterViewInit();
+    }
+  }
+
+  ngAfterViewInit() {
+    if (this.MyProp) {
+      this.MyProp.nativeElement.scrollIntoView({behavior: "smooth", block: "start"});
     }
   }
 
