@@ -3,11 +3,11 @@ import {Observable} from "rxjs";
 import {Trip} from "../../model/trip.model";
 
 @Component({
-  selector: 'app-activity-cards',
-  templateUrl: './activity-cards.component.html',
-  styleUrls: ['./activity-cards.component.css']
+  selector: 'app-user-carousel',
+  templateUrl: './user-carousel.component.html',
+  styleUrls: ['./user-carousel.component.css']
 })
-export class ActivityCardsComponent implements OnInit {
+export class UserCarouselComponent implements OnInit {
 
   @Input() tripSelected: Observable<Trip>;
 

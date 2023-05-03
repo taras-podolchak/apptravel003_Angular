@@ -1,0 +1,57 @@
+<p>user-carousel works!</p>
+
+
+<div class="section" id="carousel">
+  <div class="container">
+    <div class="section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 ml-auto mr-auto text-center">
+            <h2 class="title">Hay
+              {{(tripSelected|async)?.userList?.length || '0' }}
+              personas inscritas a este evento
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8 mr-auto ml-auto">
+        <div class="card page-carousel">
+          <ngb-carousel>
+            <ng-template ngbSlide *ngFor="let persona_per of (tripSelected|async)?.userList;">
+              <div class="row g-0">
+                <div class="col-md-6">
+                  <img src="./assets/img/images/personas/per{{persona_per.photoUser}}.jpg"
+                       class="img-thumbnail img-responsive" alt="Rounded Image">
+                </div>
+                <div class="col-md-6">
+                  <div class="card-body">
+                    <h4>{{ persona_per.name }}
+                      {{ persona_per.surname }}</h4>
+                    <hr/>
+                    <h5>Nickname:
+                      {{ persona_per.nickname }}</h5>
+                    <h5>Tipo:
+                      {{ persona_per.typeUser }}</h5>
+                    <h5>Tel:
+                      {{ persona_per.phoneNumber }}</h5>
+                    <h5>DNI:
+                      {{ persona_per.documentNumber }}</h5>
+                    <h5>Email:
+                      {{ persona_per.email }}</h5>
+                    <h5>Nacionalidad:
+                      {{ persona_per.nationality }}</h5>
+                    <h5>Pais:
+                      {{ persona_per.country }}</h5>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
