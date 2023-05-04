@@ -2,7 +2,6 @@ import {Activity} from "./activity.model";
 import {User} from "./user.model";
 
 export interface Trip {
-  id_doc: string;
   typeTrip: number;
   statusTrip: number;
   title: string;

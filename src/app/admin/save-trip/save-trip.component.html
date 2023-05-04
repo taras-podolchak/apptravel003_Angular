@@ -1,0 +1,269 @@
+<p>save-trip works!</p>
+
+
+<div class="container pt-4">
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+      <div class="card-body">
+        <h3>{{title}}</h3>
+
+        <span *ngIf="submitted && controlTripFormGroup.invalid" class="badge badge-danger">Todos los campos
+                    son obligatorios</span>
+
+        <form class="mt-4" [formGroup]="controlTripFormGroup" (ngSubmit)="saveEvent(controlTripFormGroup)">
+
+          <div class="form-group">
+            <label for="input_title">Titulo</label>
+            <input
+              [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('title').value || controlTripFormGroup.get('title')?.
+              hasError('required') && !controlTripFormGroup.get('title')?.pristine ? 'red' : 'grey'}"
+              type="text" class="form-control" id="input_title" formControlName="title" placeholder="titulo">
+
+            <small class="text-danger"
+                   *ngIf="submitted && !controlTripFormGroup.get('title').value || controlTripFormGroup.get('title').
+                   hasError('required') && !controlTripFormGroup.get('title').pristine">
+              El campo titulo es obligatorio
+            </small>
+            <div class="badge badge-danger" *ngIf="titleExist">El Trip con este titulo ya existe</div>
+          </div>
+
+
+          <label>Tipo</label>
+          <div class="form-group row justify-content-center">
+            <div class="col-3">
+              <input
+                [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('typeTrip').value || controlTripFormGroup.get('typeTrip')?.
+              hasError('required') && !controlTripFormGroup.get('typeTrip')?.pristine ? 'red' : 'grey'}"
+                class="form-check-input" type="radio" name="typeTrip" formControlName="typeTrip"
+                id="exampleRadios1" value="0">
+              <label class="form-check-label" for="exampleRadios1">Eventos de un dia</label>
+            </div>
+            <div class="col-3">
+              <input
+                [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('typeTrip').value || controlTripFormGroup.get('typeTrip')?.
+              hasError('required') && !controlTripFormGroup.get('typeTrip')?.pristine ? 'red' : 'grey'}"
+                class="form-check-input" type="radio" name="typeTrip" formControlName="typeTrip"
+                id="exampleRadios2" value="1">
+              <label class="form-check-label" for="exampleRadios2">Eventos de fin de semana</label>
+            </div>
+            <div class="col-3">
+              <input
+                [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('typeTrip').value || controlTripFormGroup.get('typeTrip')?.
+              hasError('required') && !controlTripFormGroup.get('typeTrip')?.pristine ? 'red' : 'grey'}"
+                class="form-check-input" type="radio" name="typeTrip" formControlName="typeTrip"
+                id="exampleRadios3" value="2">
+              <label class="form-check-label" for="exampleRadios3">Aventuras mas largas</label>
+            </div>
+
+            <small class="text-danger"
+                   *ngIf="submitted && !controlTripFormGroup.get('typeTrip').value || controlTripFormGroup.get('typeTrip')?.
+                   hasError('required') && !controlTripFormGroup.get('typeTrip')?.pristine">
+              El campo tipo es obligatorio
+            </small>
+          </div>
+
+
+          <label>Status</label>
+          <div class="form-group row justify-content-center">
+            <div class="col-3">
+              <input [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('statusTrip').value || controlTripFormGroup.get('statusTrip')?.
+                hasError('required') && !controlTripFormGroup.get('statusTrip')?.pristine ? 'red' : 'grey'}"
+                     class="form-check-input" type="radio" name="statusTrip" formControlName="statusTrip"
+                     id="exampleRadios4" value="0">
+              <label class="form-check-label" for="exampleRadios4">Visible</label>
+            </div>
+            <div class="col-3">
+              <input [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('statusTrip').value || controlTripFormGroup.get('statusTrip')?.
+                hasError('required') && !controlTripFormGroup.get('statusTrip')?.pristine ? 'red' : 'grey'}"
+                     class="form-check-input" type="radio" name="statusTrip" formControlName="statusTrip"
+                     id="exampleRadios5" value="1">
+              <label class="form-check-label" for="exampleRadios5">Invisible</label>
+            </div>
+            <div class="col-3">
+              <input [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('statusTrip').value || controlTripFormGroup.get('statusTrip')?.
+                 hasError('required') && !controlTripFormGroup.get('statusTrip')?.pristine ? 'red' : 'grey'}"
+                     class="form-check-input" type="radio" name="statusTrip" formControlName="statusTrip"
+                     id="exampleRadios6" value="2">
+              <label class="form-check-label" for="exampleRadios6">No completado</label>
+            </div>
+
+            <small class="text-danger" *ngIf="submitted && !controlTripFormGroup.get('statusTrip').value || controlTripFormGroup.get('statusTrip')?.
+                    hasError('required') && !controlTripFormGroup.get('statusTrip')?.pristine">
+              El campo status es obligatorio
+            </small>
+          </div>
+
+
+          <div class="form-group">
+            <label for="input_photoTrip">Foto</label>
+            <input
+              [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('photoTrip').value || controlTripFormGroup.get('photoTrip')?.
+              hasError('required') && !controlTripFormGroup.get('photoTrip')?.pristine ? 'red' : 'grey'}"
+              type="text" class="form-control" id="input_photoTrip"
+              formControlName="photoTrip" placeholder="foto">
+
+            <small class="text-danger"
+                   *ngIf="submitted && !controlTripFormGroup.get('photoTrip').value || controlTripFormGroup.get('photoTrip')?.
+                   hasError('required') && !controlTripFormGroup.get('photoTrip')?.pristine">
+              El campo foto es obligatorio
+            </small>
+          </div>
+
+
+          <div class="form-group">
+            <label for="input_level">Nivel</label>
+            <input
+              [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('level').value || controlTripFormGroup.get('level')?.
+              hasError('required') && !controlTripFormGroup.get('level')?.pristine ? 'red' : 'grey'}"
+              type="number" class="form-control" id="input_level" formControlName="level" placeholder="precio">
+
+            <small class="text-danger"
+                   *ngIf="submitted && !controlTripFormGroup.get('level').value || controlTripFormGroup.get('level')?.
+                   hasError('required') && !controlTripFormGroup.get('level')?.pristine">
+              El campo precio es obligatorio
+            </small>
+          </div>
+
+
+          <label>Transporte</label>
+          <div class="form-group row justify-content-center">
+            <div class="col-2">
+              <input [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('transportType').value || controlTripFormGroup.get('transportType')?.
+                hasError('required') && !controlTripFormGroup.get('transportType')?.pristine ? 'red' : 'grey'}"
+                     class="form-check-input" type="radio" name="transportType" formControlName="transportType"
+                     id="exampleRadios7"
+                     value="0">
+              <label class="form-check-label" for="exampleRadios7">Propio coche</label>
+            </div>
+            <div class="col-2">
+              <input [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('transportType').value || controlTripFormGroup.get('transportType')?.
+                hasError('required') && !controlTripFormGroup.get('transportType')?.pristine ? 'red' : 'grey'}"
+                     class="form-check-input" type="radio" name="transportType" formControlName="transportType"
+                     id="exampleRadios8"
+                     value="1">
+              <label class="form-check-label" for="exampleRadios8">Furgoneta</label>
+            </div>
+            <div class="col-2">
+              <input [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('transportType').value || controlTripFormGroup.get('transportType')?.
+                 hasError('required') && !controlTripFormGroup.get('transportType')?.pristine ? 'red' : 'grey'}"
+                     class="form-check-input" type="radio" name="transportType" formControlName="transportType"
+                     id="exampleRadios9"
+                     value="2">
+              <label class="form-check-label" for="exampleRadios9">Autobús</label>
+            </div>
+            <div class="col-2">
+              <input [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('transportType').value || controlTripFormGroup.get('transportType')?.
+                 hasError('required') && !controlTripFormGroup.get('transportType')?.pristine ? 'red' : 'grey'}"
+                     class="form-check-input" type="radio" name="transportType" formControlName="transportType"
+                     id="exampleRadios10"
+                     value="3">
+              <label class="form-check-label" for="exampleRadios10">Avión</label>
+            </div>
+
+            <small class="text-danger" *ngIf="submitted && !controlTripFormGroup.get('transportType').value || controlTripFormGroup.get('transportType')?.
+                    hasError('required') && !controlTripFormGroup.get('transportType')?.pristine">
+              El campo transporte es obligatorio
+            </small>
+          </div>
+
+
+          <div class="form-group">
+            <label for="input_price">Precio</label>
+            <input
+              [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('price').value || controlTripFormGroup.get('price')?.
+              hasError('required') && !controlTripFormGroup.get('price')?.pristine ? 'red' : 'grey'}"
+              type="number" class="form-control" id="input_price" formControlName="price" placeholder="precio">
+
+            <small class="text-danger"
+                   *ngIf="submitted && !controlTripFormGroup.get('price').value || controlTripFormGroup.get('price')?.
+                   hasError('required') && !controlTripFormGroup.get('price')?.pristine">
+              El campo precio es obligatorio
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label for="input_general">General</label>
+            <textarea
+              [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('general').value || controlTripFormGroup.get('general')?.
+              hasError('required') && !controlTripFormGroup.get('general')?.pristine ? 'red' : 'grey'}"
+              class="form-control" id="input_general" formControlName="general" placeholder="general"
+              rows="6"></textarea>
+
+            <small class="text-danger"
+                   *ngIf="submitted && !controlTripFormGroup.get('general').value || controlTripFormGroup.get('general')?.
+                   hasError('required') && !controlTripFormGroup.get('general')?.pristine">
+              El campo general es obligatorio
+            </small>
+          </div>
+
+
+          <div class="form-group">
+            <label for="input_recommendation">Recomendacion</label>
+            <textarea
+              [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('recommendation').value || controlTripFormGroup.get('recommendation')?.
+              hasError('required') && !controlTripFormGroup.get('recommendation')?.pristine ? 'red' : 'grey'}"
+              class="form-control" id="input_recommendation"
+              formControlName="recommendation" placeholder="recomendacion"
+              rows="9"></textarea>
+            <small class="text-danger"
+                   *ngIf="submitted && !controlTripFormGroup.get('recommendation').value || controlTripFormGroup.get('recommendation')?.
+                   hasError('required') && !controlTripFormGroup.get('recommendation')?.pristine">
+              El campo recomendacion es obligatorio
+            </small>
+          </div>
+
+
+          <div class="form-group">
+            <label for="input_safety">Seguridad</label>
+            <textarea
+              [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('safety').value || controlTripFormGroup.get('safety')?.
+              hasError('required') && !controlTripFormGroup.get('safety')?.pristine ? 'red' : 'grey'}"
+              class="form-control" id="input_safety" formControlName="safety" placeholder="seguridad"
+              rows="6"></textarea>
+
+            <small class="text-danger"
+                   *ngIf="submitted && !controlTripFormGroup.get('safety').value || controlTripFormGroup.get('safety')?.
+                   hasError('required') && !controlTripFormGroup.get('safety')?.pristine">
+              El campo seguridad es obligatorio
+            </small>
+          </div>
+
+
+          <div class="form-group">
+            <label for="input_oneWayTrip">Ida (km)</label>
+            <input
+              [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('oneWayTrip').value || controlTripFormGroup.get('oneWayTrip')?.
+              hasError('required') && !controlTripFormGroup.get('oneWayTrip')?.pristine ? 'red' : 'grey'}"
+              type="number" class="form-control" id="input_oneWayTrip" formControlName="oneWayTrip" placeholder="ida">
+
+            <small class="text-danger"
+                   *ngIf="submitted && !controlTripFormGroup.get('oneWayTrip').value || controlTripFormGroup.get('oneWayTrip')?.
+                   hasError('required') && !controlTripFormGroup.get('oneWayTrip')?.pristine">
+              El campo ida es obligatorio
+            </small>
+          </div>
+
+
+          <div class="form-group">
+            <label for="input_returnTrip">Vuelta (km)</label>
+            <input
+              [ngStyle]="{'border-color':submitted && !controlTripFormGroup.get('returnTrip').value || controlTripFormGroup.get('returnTrip')?.
+              hasError('required') && !controlTripFormGroup.get('returnTrip')?.pristine ? 'red' : 'grey'}"
+              type="number" class="form-control" id="input_returnTrip" formControlName="returnTrip"
+              placeholder="vuelta">
+
+            <small class="text-danger"
+                   *ngIf="submitted && !controlTripFormGroup.get('returnTrip').value || controlTripFormGroup.get('returnTrip')?.hasError('required') && !controlTripFormGroup.get('returnTrip')?.pristine">
+              El campo vuelta es obligatorio
+            </small>
+          </div>
+
+          <div class="mt-3">
+            <button type="text" class="btn btn-outline-info btn-round" routerLink="/admin">Volver</button>
+            <button type="submit" class="btn btn-outline-info btn-round">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

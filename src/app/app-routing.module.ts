@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {TripComponent} from "./trip/trip/trip.component";
 
 const routes: Routes = [
-  {path: '', component: TripComponent},
+  {path: '', loadChildren: () => import("./trip/trip.module").then((m) => m.TripModule)},
+  {path: 'admin', loadChildren: () => import("./admin/admin.module").then((m) => m.AdminModule)},
 ];
 
 @NgModule({
