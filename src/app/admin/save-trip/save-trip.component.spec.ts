@@ -1,18 +1,18 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {ActivityCardsComponent} from './activity-cards.component';
+import {SaveTripComponent} from './save-trip.component';
 
-describe('ActivityCardsComponent', () => {
-  let component: ActivityCardsComponent;
-  let fixture: ComponentFixture<ActivityCardsComponent>;
+describe('SaveTripComponent', () => {
+  let component: SaveTripComponent;
+  let fixture: ComponentFixture<SaveTripComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ActivityCardsComponent]
+      declarations: [SaveTripComponent]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(ActivityCardsComponent);
+    fixture = TestBed.createComponent(SaveTripComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,7 +4,7 @@ import {CommonModule} from '@angular/common';
 import {TripRoutingModule} from './trip-routing.module';
 import {TripComponent} from './trip.component';
 import {TripTypeComponent} from './trip-type/trip-type.component';
-import {SharedModule} from "../../shared/shared.module";
+import {SharedModule} from "../shared/shared.module";
 import {FormsModule} from "@angular/forms";
 
 

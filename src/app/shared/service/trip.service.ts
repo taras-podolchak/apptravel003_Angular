@@ -30,4 +30,8 @@ export class TripService {
       .param("title", title)
       .get(EndPoints.TRIP_TITLE);
   }
+
+  save(trip: Trip): Observable<Trip> {
+    return null;
+  }
 }

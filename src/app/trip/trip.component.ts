@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
-import {TripService} from "../../shared/service/trip.service";
-import {Trip} from "../../shared/model/trip.model";
+import {TripService} from "../shared/service/trip.service";
+import {Trip} from "../shared/model/trip.model";
 
 @Component({
   selector: 'app-trip',

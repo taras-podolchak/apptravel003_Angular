@@ -8,7 +8,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 export class TripTypeComponent implements OnInit {
   @Output() tripTypeSelected: EventEmitter<number> = new EventEmitter();
-  selectedOption: number;
+  selectedTripType: number;
 
   constructor() {
   }
@@ -17,6 +17,6 @@ export class TripTypeComponent implements OnInit {
   }
 
   showCarouselComponent(): void {
-    this.tripTypeSelected.emit(this.selectedOption);
+    this.tripTypeSelected.emit(this.selectedTripType);
   }
 }
