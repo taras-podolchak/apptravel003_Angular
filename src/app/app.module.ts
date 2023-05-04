@@ -9,10 +9,13 @@ import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastNoAnimationModule, ToastrModule} from 'ngx-toastr';
 import {AdminModule} from "./admin/admin.module";
+import {SharedModule} from "./shared/shared.module";
+import {NavBarComponent} from "./shared/components/nav-bar/nav-bar.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import {AdminModule} from "./admin/admin.module";
       positionClass: 'toast-bottom-right'
     }),
     ToastNoAnimationModule,
-    AdminModule
+    AdminModule,
+    SharedModule
 
   ],
   providers: [],
