@@ -14,6 +14,12 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/admin/saveTrip">saveTrip</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login" *ngIf="!isAuthenticated()">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register" *ngIf="isAuthenticated()">Logout</a>
+        </li>
       </ul>
     </div>
   </div>
