@@ -1,0 +1,159 @@
+
+
+
+<div class="section section-image section-login" style="background-image: url('assets/img/login-image.jpg');">
+  <div class="d-flex justify-content-center">
+    <div class="card-register col-6">
+          <h3 class="title">Registro</h3>
+      <form class="mt-4" [formGroup]="formGroup" (ngSubmit)="register(formGroup)">
+        <div class="row justify-content-center">
+
+          <div class="col-6">
+
+            <div class="form-group">
+              <label for="input_name">Nombre *</label>
+              <input
+                [ngStyle]="{'border-color': formGroup.get('name')?.hasError('required') && !formGroup.get('name')?.pristine ? 'red' : 'grey'}"
+                type="text" class="form-control" id="input_name" formControlName="name"
+                placeholder="name">
+
+              <small class="text-danger"
+                     *ngIf="formGroup.get('name')?.hasError('required') && !formGroup.get('name')?.pristine">
+                El campo Nombre es obligatorio
+              </small>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="form-group">
+              <label for="input_surname">Primer apellido *</label>
+              <input
+                [ngStyle]="{'border-color': formGroup.get('surname')?.hasError('required') && !formGroup.get('surname')?.pristine ? 'red' : 'grey'}"
+                type="text" class="form-control" id="input_surname"
+                formControlName="surname" placeholder="Primer apellido">
+
+              <small class="text-danger"
+                     *ngIf=" formGroup.get('surname')?.hasError('required') && !formGroup.get('surname')?.pristine">
+                El campo Primer apellido es obligatorio
+              </small>
+            </div>
+          </div>
+
+          <div class="pull-6">
+            <div class="form-group">
+              <label for="input_secondSurname">Segundo apellido</label>
+              <input
+                [ngStyle]="{'border-color': formGroup.get('secondSurname')?.hasError('required') && !formGroup.get('secondSurname')?.pristine ? 'red' : 'grey'}"
+                type="text" class="form-control" id="input_secondSurname"
+                formControlName="secondSurname" placeholder="Segundo apellido">
+
+              <small class="text-danger"
+                     *ngIf=" formGroup.get('secondSurname')?.hasError('required') && !formGroup.get('secondSurname')?.pristine">
+                El campo Segundo apellido es obligatorio
+              </small>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="form-group d-flex justify-content-center">
+              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+
+                <input type="radio" class="btn-check" name="role"
+                       id="input_radioValiente" value="EXPLORER" formControlName="role" checked>
+                <label class="btn btn-outline-success" for="input_radioValiente">Soy valiente</label>
+
+                <input type="radio" class="btn-check" name="role"
+                       id="input_radioColaborador" value="GUIDE" formControlName="role">
+                <label class="btn btn-outline-warning" for="input_radioColaborador">Soy
+                  colaborador</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="form-group">
+              <label for="input_email">Email *</label>
+              <input
+                [ngStyle]="{'border-color': email!.hasError('required') && !email!.pristine ? 'red' : 'grey'}"
+                type="email" class="form-control" id="input_email" formControlName="email"
+                placeholder="Email" (keyup)="emailValidator()">
+
+              <small class="text-danger"
+                     *ngIf="email!.hasError('required') && !email!.pristine ">
+                El campo Email es obligatorio
+              </small>
+
+              <small class="text-danger"
+                     *ngIf=" email!.hasError('email') && !email!.pristine">
+                El campo Email no tiene formato correspondiente
+              </small>
+
+            </div>
+          </div>
+
+
+          <div class="col-6">
+            <div class="form-group">
+              <label for="input_password_1">Contraseña *</label>
+              <input
+                [ngStyle]="{'border-color': formGroup.get('password_1')?.hasError('required') && !formGroup.get('password_1')?.pristine ? 'red' : 'grey'}"
+                type="text" class="form-control" id="input_password_1"
+                formControlName="password_1" placeholder="password">
+              <small class="text-danger"
+                     *ngIf=" formGroup.get('password_1')?.hasError('required') && !formGroup.get('password_1')?.pristine">
+                El campo Contraseña es obligatorio
+              </small>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="form-group">
+              <label for="input_password_2">password *</label>
+              <input
+                [ngStyle]="{'border-color': formGroup.get('password_2')?.hasError('required') && !formGroup.get('password_2')?.pristine ? 'red' : 'grey'}"
+                type="text" class="form-control" id="input_password_2"
+                formControlName="password_2" placeholder="password"
+                (keyup)="passwordValidator(formGroup)">
+
+              <small class="text-danger"
+                     *ngIf=" formGroup.get('password_2')?.hasError('required') && !formGroup.get('password_2')?.pristine">
+                El campo Contraseña es obligatorio
+              </small>
+            </div>
+          </div>
+
+
+          <div class="col-6">
+            <button class="btn btn-danger btn-block btn-round">Registrarse</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="section section-dark">
+  <div class="container">
+    <div class="row example-page">
+      <div class="col-md-6 text-center" routerLinkActive="active">
+        <a [routerLink]="['/landing']">
+          <img src="./assets/img/examples/landing-page.JPG" alt="Rounded Image"
+               class="img-rounded img-responsive" style="width: 100%">
+          <a [routerLink]="['/landing']" class="btn btn-outline-neutral btn-round">Landing Page</a>
+        </a>
+      </div>
+
+      <div class="col-md-6 text-center" routerLinkActive="active">
+        <a [routerLink]="['/user-profile']">
+          <img src="./assets/img/examples/profile-page.JPG" alt="Rounded Image"
+               class="img-rounded img-responsive" style="width: 100%">
+          <a [routerLink]="['/user-profile']" class="btn btn-outline-neutral btn-round">Profile
+            Page</a>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

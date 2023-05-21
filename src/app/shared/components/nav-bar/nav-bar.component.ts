@@ -1,14 +1,14 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import {Location} from '@angular/common';
+import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent  implements OnInit {
+export class NavBarComponent implements OnInit {
   private toggleButton: any;
   private sidebarVisible: boolean;
 
@@ -45,15 +45,7 @@ export class NavBarComponent  implements OnInit {
     this.sidebarVisible = false;
     html.classList.remove('nav-open');
   };
-  sidebarToggle() {
-    // const toggleButton = this.toggleButton;
-    // const body = document.getElementsByTagName('body')[0];
-    if (this.sidebarVisible === false) {
-      this.sidebarOpen();
-    } else {
-      this.sidebarClose();
-    }
-  };
+
   isHome() {
     var titlee = this.location.prepareExternalUrl(this.location.path());
     if (titlee.charAt(0) === '#') {
@@ -61,8 +53,7 @@ export class NavBarComponent  implements OnInit {
     }
     if (titlee === '/home') {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }
@@ -73,17 +64,20 @@ export class NavBarComponent  implements OnInit {
     }
     if (titlee === '/documentation') {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }
+  isAuthenticated() {
+    return false;
+  }
+
   logout() {
-  /*  this._authService.logout().then(() => {
-      this.toastr.success('Hasta pronto!', 'Adios!');
-   /*   this.router.navigate(['/home']);
-    }).catch(() => {
-      this.toastr.error('Error a la ora de cerrar la sesion', 'Error!');
-    })*/
+    /*  this._authService.logout().then(() => {
+        this.toastr.success('Hasta pronto!', 'Adios!');
+     /*   this.router.navigate(['/home']);
+      }).catch(() => {
+        this.toastr.error('Error a la ora de cerrar la sesion', 'Error!');
+      })*/
   }
 }
