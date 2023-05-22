@@ -13,11 +13,10 @@ import {AuthService} from "../../service/auth.service";
 })
 export class RegisterComponent implements OnInit {
 
-  focus: any;
   formGroup: FormGroup;
-  submitted = false;
   validPasswords = false;
-  private searchTimeout!: number;
+  private searchTimeout1!: number;
+  private searchTimeout2!: number;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,7 +32,7 @@ export class RegisterComponent implements OnInit {
       secondSurname: new FormControl('',),
       role: new FormControl("EXPLORER", [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
-      password_1: new FormControl('', [Validators.required]),
+      password_1: new FormControl('', [Validators.required, Validators.minLength(6)]),
       password_2: new FormControl('', [Validators.required]),
     });
   }
@@ -41,9 +40,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   register(form: FormGroup) {
-    this.submitted = true;
     if (form.invalid) {
       this.toastr.error('Rellena el formulario por favor', 'Error!')
       return;
@@ -67,7 +64,6 @@ export class RegisterComponent implements OnInit {
               next: () => {
                 this.toastr.success('El registro se ha producido correctamente!', 'Registrado con éxito!')
                 this.router.navigate(['/home'])
-              //localStorage.setItem('access_token', next.headers.get("Authorization").slice(7));
               }
             });
           },
@@ -76,14 +72,13 @@ export class RegisterComponent implements OnInit {
       );
   }
 
-
   get email() {
     return this.formGroup.get('email');
   }
 
   emailValidator() {
-    clearTimeout(this.searchTimeout);
-    this.searchTimeout = window.setTimeout(() => {
+    clearTimeout(this.searchTimeout1);
+    this.searchTimeout1 = window.setTimeout(() => {
       if (this.email!.hasError('email')) {
         this.toastr.error('El campo Email no tiene formato correspondiente', 'Error!')
       }
@@ -93,9 +88,10 @@ export class RegisterComponent implements OnInit {
     }, 1000);
   }
 
-  passwordValidator(form: FormGroup) {
-    clearTimeout(this.searchTimeout);
-    this.searchTimeout = window.setTimeout(() => {
+  passwordComparer(form: FormGroup) {
+    clearTimeout(this.searchTimeout1);
+    this.searchTimeout1 = window.setTimeout(() => {
+
       if (form.value.password_1 === form.value.password_2) {
         this.toastr.success('Las contraseñas  correctas', 'Perfecto!')
         this.validPasswords = true;
@@ -106,5 +102,13 @@ export class RegisterComponent implements OnInit {
     }, 1000);
   }
 
+  passwordValidator(formGroup: FormGroup) {
+    clearTimeout(this.searchTimeout2);
+    this.searchTimeout2 = window.setTimeout(() => {
+      if (this.formGroup.get('password_1').hasError('minlength')) {
+        this.toastr.error('La contraseña debe tener al menos 6 caracteres', 'Error!');
+      }
+    }, 1000);
 
+  }
 }

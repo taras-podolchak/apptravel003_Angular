@@ -16,15 +16,12 @@ export class SaveTripComponent implements OnInit {
   title = '';
 
   @Input() trip: Observable<Trip>;
-  controlTripFormGroup: FormGroup;
+  formGroup: FormGroup;
 
   formErrors = {};
 
   submitted = false;
   titleExist = false;
-
-  selectedTripType: number;
-  selectedTripStatus: number;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,7 +30,7 @@ export class SaveTripComponent implements OnInit {
     private tripService: TripService,
     private router: Router,
   ) {
-    this.controlTripFormGroup = this.formBuilder.group({
+    this.formGroup = this.formBuilder.group({
       typeTrip: ['', Validators.required],
       statusTrip: ['', Validators.required],
       title: ['', Validators.required],
@@ -49,16 +46,15 @@ export class SaveTripComponent implements OnInit {
       // activityList: ['', Validators.required],
     })
 
-    this.controlTripFormGroup.valueChanges.subscribe((data) => {
+    this.formGroup.valueChanges.subscribe((data) => {
       this.formErrors = {};
       for (const field in data) {
-        const control = this.controlTripFormGroup.get(field);
+        const control = this.formGroup.get(field);
         if (control && control.dirty && control.invalid) {
           this.formErrors[field] = true;
         }
       }
     });
-
   }
 
   ngOnInit(): void {
@@ -72,7 +68,7 @@ export class SaveTripComponent implements OnInit {
   }
 
   fillFormWithIdEve() {
-    this.controlTripFormGroup.setValue({
+    this.formGroup.setValue({
       typeTrip: null,
       statusTrip: null,
       title: null,
@@ -91,7 +87,7 @@ export class SaveTripComponent implements OnInit {
 
   fillFormWithEvent(trip: Observable<Trip>) {
     trip.subscribe(existTrip => {
-      this.controlTripFormGroup.setValue({
+      this.formGroup.setValue({
         typeTrip: existTrip.typeTrip,
         statusTrip: existTrip.statusTrip,
         title: existTrip.title,
@@ -132,11 +128,11 @@ export class SaveTripComponent implements OnInit {
     };
 
     this.tripService.save(trip).subscribe({
-      next: () => this.toast.success('El Trip creado con exito!', 'Trip creado!'),
+      next: () => {
+        this.toast.success('El Trip creado con exito!', 'Trip creado!')
+        this.router.navigate(['/admin'])
+      },
       error: () => this.toast.error('Error a la hora de crear un Trip', 'Error!'),
-      complete: () => this.router.navigate(['/admin'])
     });
-
-
   }
 }
