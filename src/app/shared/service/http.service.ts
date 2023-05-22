@@ -32,25 +32,8 @@ export class HttpService {
     return this;
   }
 
-  paramsFrom(dto: any): HttpService {
-    Object.getOwnPropertyNames(dto)
-      .forEach(item => this.param(item, dto[item]));
-    return this;
-  }
-
-  successful(notification = 'Successful'): HttpService {
-    this.successfulNotification = notification;
-    return this;
-  }
-
   error(notification: string): HttpService {
     this.errorNotification = notification;
-    return this;
-  }
-
-  pdf(): HttpService {
-    this.responseType = 'blob';
-    this.header('Accept', 'application/pdf , application/json');
     return this;
   }
 
@@ -70,32 +53,6 @@ export class HttpService {
         map(response => this.extractData(response)),
         catchError(error => this.handleError(error))
       );
-  }
-
-  put(endpoint: string, body?: object): Observable<any> {
-    return this.http
-      .put(endpoint, body, this.createOptions())
-      .pipe(
-        map(response => this.extractData(response)),
-        catchError(error => this.handleError(error))
-      );
-  }
-
-  patch(endpoint: string, body?: object): Observable<any> {
-    return this.http
-      .patch(endpoint, body, this.createOptions())
-      .pipe(
-        map(response => this.extractData(response)),
-        catchError(error => this.handleError(error))
-      );
-  }
-
-  delete(endpoint: string): Observable<any> {
-    return this.http
-      .delete(endpoint, this.createOptions())
-      .pipe(
-        map(response => this.extractData(response)),
-        catchError(error => this.handleError(error)));
   }
 
   authBasic(email: string, password: string): HttpService {

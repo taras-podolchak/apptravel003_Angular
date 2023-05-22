@@ -1,6 +1,7 @@
 import {Role} from "./role.model";
 
 export interface User {
+  token?: string;
   id_doc?: string;
   role: Role;
   statusUser: number;

@@ -9,16 +9,16 @@
           <a class="nav-link" routerLink="/">Inicio </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/admin">Admin</a>
+          <a class="nav-link" routerLink="/admin" *ngIf="isAdmin()">Admin</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/admin/saveTrip">saveTrip</a>
+          <a class="nav-link" routerLink="/admin/saveTrip" *ngIf="isAdmin()">SaveTrip</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/login" *ngIf="!isAuthenticated()">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/register" *ngIf="isAuthenticated()">Logout</a>
+          <a class="nav-link" routerLink="/register" *ngIf="isAuthenticated()" (click)="logout()">Logout</a>
         </li>
       </ul>
     </div>

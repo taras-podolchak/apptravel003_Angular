@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from "./http.service";
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
 import {User} from "../model/user.model";
 import {environment} from "@env";
-import { JwtHelperService } from '@auth0/angular-jwt';
+import {JwtHelperService} from '@auth0/angular-jwt';
 import {map} from "rxjs/operators";
 import {Router} from "@angular/router";
+import {Role} from "../model/role.model";
 
 
 @Injectable({
@@ -29,7 +30,7 @@ export class AuthService {
         map(jsonToken => {
           const jwtHelper = new JwtHelperService();
           this.user = jsonToken; // {token:jwt} => user.token = jwt
-          this.user.phoneNumber = jwtHelper.decodeToken(jsonToken.token).user;  // secret key is not necessary
+          this.user.phoneNumber = jwtHelper.decodeToken(jsonToken.token).phoneNumber;  // secret key is not necessary
           this.user.name = jwtHelper.decodeToken(jsonToken.token).name;
           this.user.role = jwtHelper.decodeToken(jsonToken.token).role;
           return this.user;
@@ -43,9 +44,17 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return true;
-    // return this.user != null && !(new JwtHelperService().isTokenExpired(this.user.token));
+    return this.user != null && !(new JwtHelperService().isTokenExpired(this.user.token));
   }
 
+  getName(): string {
+    return this.user ? this.user.name : '???';
+  }
 
+  hasRoles(roles: Role[]): boolean {
+    return this.isAuthenticated() && roles.includes(this.user.role);
+  }
+  isAdmin(): boolean {
+    return this.hasRoles([Role.ADMIN]);
+  }
 }

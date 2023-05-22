@@ -1,22 +1,17 @@
-
-
-
 <div class="section section-image section-login" style="background-image: url('assets/img/login-image.jpg');">
+  <h2 class="title text-center">Bien venido</h2>
   <div class="d-flex justify-content-center">
     <div class="card-register col-6">
-          <h3 class="title">Registro</h3>
       <form class="mt-4" [formGroup]="formGroup" (ngSubmit)="register(formGroup)">
         <div class="row justify-content-center">
 
           <div class="col-6">
-
             <div class="form-group">
               <label for="input_name">Nombre *</label>
               <input
                 [ngStyle]="{'border-color': formGroup.get('name')?.hasError('required') && !formGroup.get('name')?.pristine ? 'red' : 'grey'}"
                 type="text" class="form-control" id="input_name" formControlName="name"
                 placeholder="name">
-
               <small class="text-danger"
                      *ngIf="formGroup.get('name')?.hasError('required') && !formGroup.get('name')?.pristine">
                 El campo Nombre es obligatorio
@@ -91,14 +86,14 @@
             </div>
           </div>
 
-
           <div class="col-6">
             <div class="form-group">
               <label for="input_password_1">Contraseña *</label>
               <input
                 [ngStyle]="{'border-color': formGroup.get('password_1')?.hasError('required') && !formGroup.get('password_1')?.pristine ? 'red' : 'grey'}"
-                type="text" class="form-control" id="input_password_1"
-                formControlName="password_1" placeholder="password">
+                type="password" class="form-control" id="input_password_1"
+                formControlName="password_1" placeholder="password"
+                (keyup)="passwordValidator(formGroup)">
               <small class="text-danger"
                      *ngIf=" formGroup.get('password_1')?.hasError('required') && !formGroup.get('password_1')?.pristine">
                 El campo Contraseña es obligatorio
@@ -111,9 +106,9 @@
               <label for="input_password_2">password *</label>
               <input
                 [ngStyle]="{'border-color': formGroup.get('password_2')?.hasError('required') && !formGroup.get('password_2')?.pristine ? 'red' : 'grey'}"
-                type="text" class="form-control" id="input_password_2"
+                type="password" class="form-control" id="input_password_2"
                 formControlName="password_2" placeholder="password"
-                (keyup)="passwordValidator(formGroup)">
+                (keyup)="passwordComparer(formGroup)">
 
               <small class="text-danger"
                      *ngIf=" formGroup.get('password_2')?.hasError('required') && !formGroup.get('password_2')?.pristine">
@@ -121,7 +116,6 @@
               </small>
             </div>
           </div>
-
 
           <div class="col-6">
             <button class="btn btn-danger btn-block btn-round">Registrarse</button>
@@ -132,8 +126,6 @@
     </div>
   </div>
 </div>
-
-
 
 <div class="section section-dark">
   <div class="container">
