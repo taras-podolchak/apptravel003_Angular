@@ -53,19 +53,14 @@ export class RegisterComponent implements OnInit {
       secondSurname: form.value.secondSurname,
       email: form.value.email,
       password: form.value.password_1,
-      entryDate: new Date(),
       legalConditions: true,
       rememberPassword: true,
     }
     if (this.formGroup.valid && this.validPasswords)
       this.authService.register(user).subscribe({
           next: () => {
-            this.authService.login(user.email, user.password).subscribe({
-              next: () => {
-                this.toastr.success('El registro se ha producido correctamente!', 'Registrado con éxito!')
-                this.router.navigate(['/home'])
-              }
-            });
+            this.toastr.success('El registro se ha producido correctamente!', 'Registrado con éxito!')
+            this.router.navigate(['/home'])
           },
           error: () => this.toastr.error('Error a la hora de registrarse', 'Error!')
         }

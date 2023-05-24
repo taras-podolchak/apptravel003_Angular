@@ -1,68 +1,61 @@
 <div class="section section-image section-login" style="background-image: url('assets/img/login-image.jpg');">
-  <div class="d-flex align-items-center justify-content-center">
-    <section>
-      <h2 class="title text-center">Hola!</h2>
-      <div class="card card-register">
-        <form class="register-form" [formGroup]="formGroup" (ngSubmit)="login(formGroup)">
+  <h2 class="title text-center">Hola</h2>
+  <div class="d-flex justify-content-center">
+    <div class="card-register col-6">
+      <form class="mt-4" [formGroup]="formGroup" (ngSubmit)="login(formGroup)">
+        <div class="row justify-content-center">
 
-          <div class="col-12">
-            <div class="form-group">
-              <label for="input_email">Email *</label>
-              <input [ngStyle]="{'border-color': email!.hasError('required') && !email!.pristine ? 'red' : 'grey'}"
-                     type="email" class="form-control" id="input_email" formControlName="email"
-                     placeholder="Email" (keyup)="emailValidator()">
-              <small class="text-danger" *ngIf="email!.hasError('required') && !email!.pristine ">
-                El campo Email es obligatorio
-              </small>
-              <small class="text-danger" *ngIf=" email!.hasError('email') && !email!.pristine">
-                El campo Email no tiene formato correspondiente
-              </small>
-            </div>
+          <div class="form-group">
+            <label for="input_email">Email *</label>
+            <input [ngStyle]="{'border-color': email!.hasError('required') && !email!.pristine ? 'red' : 'grey'}"
+                   type="email" class="form-control" id="input_email" formControlName="email"
+                   placeholder="Email" (keyup)="emailValidator()">
+            <small class="text-danger" *ngIf="email!.hasError('required') && !email!.pristine ">
+              El campo Email es obligatorio
+            </small>
+            <small class="text-danger" *ngIf=" email!.hasError('email') && !email!.pristine">
+              El campo Email no tiene formato correspondiente
+            </small>
           </div>
 
-          <div class="col-12">
-            <div class="form-group">
-              <label for="input_password">Contraseña *</label>
-              <input
-                [ngStyle]="{'border-color': password?.hasError('required') && !password?.pristine ? 'red' : 'grey'}"
-                type="password" class="form-control" id="input_password" formControlName="password"
-                placeholder="Contraseña">
-              <small class="text-danger" *ngIf=" password?.hasError('required') && !password?.pristine">
-                El campo Contraseña es obligatorio
-              </small>
-            </div>
+          <div class="form-group">
+            <label for="input_password">Contraseña *</label>
+            <input
+              [ngStyle]="{'border-color': password?.hasError('required') && !password?.pristine ? 'red' : 'grey'}"
+              type="password" class="form-control" id="input_password" formControlName="password"
+              placeholder="Contraseña">
+            <small class="text-danger" *ngIf=" password?.hasError('required') && !password?.pristine">
+              El campo Contraseña es obligatorio
+            </small>
           </div>
 
           <button class="btn btn-danger btn-block btn-round">Iniciar sesion</button>
-        </form>
-        <div class="forgot">
-          <a href="#" class="btn btn-link btn-danger">Has olvidado la contraseña?</a>
         </div>
+      </form>
+      <a href="#" class="btn btn-link btn-danger">Has olvidado la contraseña?</a>
+      <div class="col text-center">
+        <a class="btn btn-outline-primary btn-round btn-lg" href="/register">Registrarse</a>
       </div>
-      <div class="col text-center" routerLinkActive="active">
-        <a [routerLink]="['/register']" class="btn btn-outline-neutral btn-round btn-lg">Registrarse</a>
-      </div>
-    </section>
+    </div>
   </div>
 
 </div>
 <div class="section section-dark">
   <div class="container">
     <div class="row example-page">
-      <div class="col-md-6 text-center" routerLinkActive="active">
-        <a [routerLink]="['/landing']">
+      <div class="col-md-6 text-center">
+        <a routerLink="/">
           <img src="./assets/img/examples/landing-page.JPG" alt="Rounded Image"
                class="img-rounded img-responsive" style="width: 100%">
-          <a [routerLink]="['/landing']" class="btn btn-outline-neutral btn-round">Landing Page</a>
+          <a routerLink="/" class="btn btn-outline-neutral btn-round">Landing Page</a>
         </a>
       </div>
 
-      <div class="col-md-6 text-center" routerLinkActive="active">
-        <a [routerLink]="['/user-profile']">
+      <div class="col-md-6 text-center">
+        <a routerLink="/">
           <img src="./assets/img/examples/profile-page.JPG" alt="Rounded Image"
                class="img-rounded img-responsive" style="width: 100%">
-          <a [routerLink]="['/user-profile']" class="btn btn-outline-neutral btn-round">Profile
-            Page</a>
+          <a routerLink="/" class="btn btn-outline-neutral btn-round">Profile Page</a>
         </a>
       </div>
     </div>

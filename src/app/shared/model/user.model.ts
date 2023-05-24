@@ -12,7 +12,7 @@ export interface User {
   preferActivity?: number[];
   phoneNumber?: number;
   email: string;
-  password: string;
+  password?: string;
   country?: string;
   address?: string;
   location?: string;
@@ -22,8 +22,8 @@ export interface User {
   nationality?: string;
   photoUser?: string;
   photoOrganization?: string;
-  entryDate: Date;
+  entryDate?: Date;
   leavingDate?: Date;
-  legalConditions: boolean;
-  rememberPassword: boolean;
+  legalConditions?: boolean;
+  rememberPassword?: boolean;
 }
