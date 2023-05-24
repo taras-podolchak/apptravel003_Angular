@@ -60,9 +60,9 @@ export class RegisterComponent implements OnInit {
       this.authService.register(user).subscribe({
           next: () => {
             this.toastr.success('El registro se ha producido correctamente!', 'Registrado con éxito!')
-            this.router.navigate(['/home'])
+            this.router.navigate(['/'])
           },
-          error: () => this.toastr.error('Error a la hora de registrarse', 'Error!')
+          error: () => this.toastr.error("El usuario con este correo ya existe", 'Error!')
         }
       );
   }
