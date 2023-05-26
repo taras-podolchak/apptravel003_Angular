@@ -31,7 +31,17 @@ export class TripService {
       .get(EndPoints.TRIP_TITLE);
   }
 
-  save(trip: Trip): Observable<Trip> {
-    return null;
+  update(title: string, trip: Trip): Observable<Trip> {
+    return this.httpService
+      .put(EndPoints.TRIPS + '/' + title, trip);
+  }
+
+  create(trip: Trip): Observable<Trip> {
+    return this.httpService
+      .post(EndPoints.TRIPS, trip);
+  }
+
+  delete(title: string) {
+
   }
 }

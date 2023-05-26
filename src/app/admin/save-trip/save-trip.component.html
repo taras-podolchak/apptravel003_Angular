@@ -60,6 +60,22 @@
           </div>
 
 
+          <div class="form-group">
+            <label for="input_photoTrip">Foto</label>
+            <input
+              [ngStyle]="{'border-color':submitted && !formGroup.get('photoTrip').value || formGroup.get('photoTrip')?.
+              hasError('required') && !formGroup.get('photoTrip')?.pristine ? 'red' : 'grey'}"
+              type="text" class="form-control" id="input_photoTrip"
+              formControlName="photoTrip" placeholder="foto">
+
+            <small class="text-danger"
+                   *ngIf="submitted && !formGroup.get('photoTrip').value || formGroup.get('photoTrip')?.
+                   hasError('required') && !formGroup.get('photoTrip')?.pristine">
+              El campo foto es obligatorio
+            </small>
+          </div>
+
+
           <label>Status</label>
           <div class="form-group row justify-content-center">
             <div class="col-3">
@@ -92,27 +108,11 @@
 
 
           <div class="form-group">
-            <label for="input_photoTrip">Foto</label>
-            <input
-              [ngStyle]="{'border-color':submitted && !formGroup.get('photoTrip').value || formGroup.get('photoTrip')?.
-              hasError('required') && !formGroup.get('photoTrip')?.pristine ? 'red' : 'grey'}"
-              type="text" class="form-control" id="input_photoTrip"
-              formControlName="photoTrip" placeholder="foto">
-
-            <small class="text-danger"
-                   *ngIf="submitted && !formGroup.get('photoTrip').value || formGroup.get('photoTrip')?.
-                   hasError('required') && !formGroup.get('photoTrip')?.pristine">
-              El campo foto es obligatorio
-            </small>
-          </div>
-
-
-          <div class="form-group">
             <label for="input_level">Nivel</label>
             <input
               [ngStyle]="{'border-color':submitted && !formGroup.get('level').value || formGroup.get('level')?.
               hasError('required') && !formGroup.get('level')?.pristine ? 'red' : 'grey'}"
-              type="number" class="form-control" id="input_level" formControlName="level" placeholder="precio">
+              type="number" class="form-control" id="input_level" formControlName="level" placeholder="Nivel">
 
             <small class="text-danger"
                    *ngIf="submitted && !formGroup.get('level').value || formGroup.get('level')?.

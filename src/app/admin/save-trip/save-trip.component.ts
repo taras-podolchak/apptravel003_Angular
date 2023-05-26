@@ -1,9 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TripService} from "../../shared/service/trip.service";
-import {Observable} from "rxjs";
 import {Trip} from "../../shared/model/trip.model";
 
 @Component({
@@ -14,12 +13,9 @@ import {Trip} from "../../shared/model/trip.model";
 export class SaveTripComponent implements OnInit {
 
   title = '';
-
-  @Input() trip: Observable<Trip>;
+  trip: Trip;
   formGroup: FormGroup;
-
   formErrors = {};
-
   submitted = false;
   titleExist = false;
 
@@ -58,6 +54,7 @@ export class SaveTripComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.trip = JSON.parse(this.aRoute.snapshot.queryParams?.['object'] ?? null);
     if (this.trip) {
       this.title = "Modificacion del Trip"
       this.fillFormWithEvent(this.trip);
@@ -85,24 +82,21 @@ export class SaveTripComponent implements OnInit {
     })
   }
 
-  fillFormWithEvent(trip: Observable<Trip>) {
-    trip.subscribe(existTrip => {
-      this.formGroup.setValue({
-        typeTrip: existTrip.typeTrip,
-        statusTrip: existTrip.statusTrip,
-        title: existTrip.title,
-        photoTrip: existTrip.photoTrip,
-        level: existTrip.level,
-        transportType: existTrip.transportType,
-        price: existTrip.price,
-        general: existTrip.general,
-        recommendation: existTrip.recommendation,
-        safety: existTrip.safety,
-        oneWayTrip: existTrip.oneWayTrip,
-        returnTrip: existTrip.returnTrip,
-        // activityList: existTrip.activityList,
-      })
-    });
+  fillFormWithEvent(existTrip: Trip) {
+    this.formGroup.setValue({
+      typeTrip: existTrip.typeTrip.toString(),
+      statusTrip: existTrip.statusTrip.toString(),
+      title: existTrip.title,
+      photoTrip: existTrip.photoTrip,
+      level: existTrip.level,
+      transportType: existTrip.transportType.toString(),
+      price: existTrip.price,
+      general: existTrip.general,
+      recommendation: existTrip.recommendation,
+      safety: existTrip.safety,
+      oneWayTrip: existTrip.oneWayTrip,
+      returnTrip: existTrip.returnTrip,
+    })
   }
 
   saveEvent(form: any): void {
@@ -123,16 +117,32 @@ export class SaveTripComponent implements OnInit {
       safety: form.value.safety,
       oneWayTrip: form.value.oneWayTrip,
       returnTrip: form.value.returnTrip,
-      activityList: null,
-      userList: null
+      activityList: this.trip.activityList,
+      userList: this.trip.userList
     };
+    if (this.trip)
+      this.update(this.trip.title, trip)
+    else
+      this.create(trip)
+  }
 
-    this.tripService.save(trip).subscribe({
+  private create(trip: Trip) {
+    this.tripService.create(trip).subscribe({
       next: () => {
         this.toast.success('El Trip creado con exito!', 'Trip creado!')
         this.router.navigate(['/admin'])
       },
       error: () => this.toast.error('Error a la hora de crear un Trip', 'Error!'),
+    });
+  }
+
+  private update(title: string, trip: Trip) {
+    this.tripService.update(title, trip).subscribe({
+      next: () => {
+        this.toast.success('El Trip actualizado con exito!', 'Trip actualizado!')
+        this.router.navigate(['/admin'])
+      },
+      error: () => this.toast.error('Error a la hora de actualizar el Trip', 'Error!'),
     });
   }
 }

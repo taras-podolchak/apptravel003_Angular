@@ -6,6 +6,9 @@ import {AdminComponent} from './admin.component';
 import {SaveTripComponent} from './save-trip/save-trip.component';
 import {SharedModule} from "../shared/shared.module";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatOptionModule} from "@angular/material/core";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import {ReactiveFormsModule} from "@angular/forms";
     CommonModule,
     AdminRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatOptionModule,
+    MatInputModule,
+    MatSelectModule
   ]
 })
 export class AdminModule {

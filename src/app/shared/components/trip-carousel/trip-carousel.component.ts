@@ -1,6 +1,9 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
 import {Observable, of, timer} from "rxjs";
 import {Trip} from "../../model/trip.model";
+import {AuthService} from "../../service/auth.service";
+import {TripService} from "../../service/trip.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-trip-carousel',
@@ -18,7 +21,10 @@ export class TripCarouselComponent implements OnInit {
     "Eventos de finde de semana",
     "Aventuras mas largas"];
 
-  constructor() {
+  constructor(
+    private authService: AuthService,
+    private tripService: TripService,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -43,24 +49,14 @@ export class TripCarouselComponent implements OnInit {
   }
 
   isAdmin() {
-    /*  var titlee = this.location.prepareExternalUrl(this.location.path());
-      if (titlee.charAt(0) === '#') {
-        titlee = titlee.slice(1);
-      }
-      if (titlee === '/admin') {
-        this.title = 'Todos los eventos';
-
-    return true;
-     } else {*/
-    return false;
-    // }
+    return this.authService.isAdmin();
   }
 
-  deleteTrip(title: string) {
-    /*  return this.tripService.deleteTrip('' + title).then((() => {
-        this.toast.warning('El evento eliminado con exito!', 'Evento eliminado!');
-      })).catch(error => {
-        this.toast.error(error, 'Error a la hora de eliminar el evento!');
-      });*/
+  delete(title: string) {
+    this.tripService.delete(title);
+  }
+
+  update(trip: Trip) {
+    this.router.navigate(['/admin/saveTrip'],  { queryParams: { object: JSON.stringify(trip) } });
   }
 }
