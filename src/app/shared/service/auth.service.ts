@@ -70,4 +70,7 @@ export class AuthService {
   isAdmin(): boolean {
     return this.hasRoles([Role.ADMIN]);
   }
+  getToken(): string {
+    return this.user ? this.user.token : undefined;
+  }
 }

@@ -36,12 +36,12 @@
                   <div class="row ">
                     <div class="col" *ngIf="isAdmin()">
                       <button type="button" class="btn btn-outline-default btn-round"
-                              [routerLink]="['/admin/editEvent',trip.title]">Modificar evento
+                              (click)="update(trip)">Modificar evento
                       </button>
                     </div>
                     <div class="col" *ngIf="isAdmin()">
                       <button type="button" class="btn btn-outline-default btn-round"
-                              (click)="deleteTrip(trip.title)">Eliminar evento
+                              (click)="delete(trip.title)">Eliminar evento
                       </button>
                     </div>
                   </div>
@@ -52,7 +52,7 @@
         </div>
         <div class="col" *ngIf="isAdmin()">
           <div class="d-grid gap-2">
-            <button class="btn btn-warning" type="button" [routerLink]="['/admin/createEvent']">
+            <button class="btn btn-warning" type="button" [routerLink]="['/admin/saveTrip']">
               Crear un nuevo evento
             </button>
           </div>
