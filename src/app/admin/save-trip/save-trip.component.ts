@@ -117,8 +117,8 @@ export class SaveTripComponent implements OnInit {
       safety: form.value.safety,
       oneWayTrip: form.value.oneWayTrip,
       returnTrip: form.value.returnTrip,
-      activityList: this.trip.activityList,
-      userList: this.trip.userList
+      activityList: this.trip ? this.trip.activityList : null,
+      userList: this.trip ? this.trip.userList : null
     };
     if (this.trip)
       this.update(this.trip.title, trip)

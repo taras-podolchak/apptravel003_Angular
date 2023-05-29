@@ -12,10 +12,11 @@ import {Router} from "@angular/router";
 })
 export class TripCarouselComponent implements OnInit {
 
-  @Input() trips: Observable<Trip[]> = of([]);
+  @Input() typeOfTripsSelected: number;
   @Output() tripSelected: EventEmitter<string> = new EventEmitter();
   @ViewChild("carousel") MyProp: ElementRef;
 
+  trips: Observable<Trip[]> = of([]);
   typeTrips: string[] = [
     "Eventos de un dia",
     "Eventos de finde de semana",
@@ -28,12 +29,20 @@ export class TripCarouselComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.search();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['trips']) {
       this.ngAfterViewInit();
     }
+  }
+
+  private search() {
+    if (this.typeOfTripsSelected)
+      this.trips = this.tripService.getByTypeTrip(this.typeOfTripsSelected);
+    else
+      this.trips = this.tripService.getAll();
   }
 
   ngAfterViewInit() {
@@ -53,10 +62,13 @@ export class TripCarouselComponent implements OnInit {
   }
 
   delete(title: string) {
-    this.tripService.delete(title);
+    this.tripService.delete(title).subscribe(() => this.search());
   }
 
   update(trip: Trip) {
-    this.router.navigate(['/admin/saveTrip'],  { queryParams: { object: JSON.stringify(trip) } });
+    this.router.navigate(['/admin/saveTrip'], {queryParams: {object: JSON.stringify(trip)}});
   }
 }
+
+
+
