@@ -10,7 +10,6 @@ import {TripService} from "../shared/service/trip.service";
 })
 export class AdminComponent implements OnInit {
 
-  trips: Observable<Trip[]>;
   tripSelected: Observable<Trip>;
 
   constructor(
@@ -19,7 +18,6 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.trips = this.tripService.getAll();
   }
 
   showTripDetail(event: string): void {

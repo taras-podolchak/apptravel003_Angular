@@ -1,6 +1,4 @@
-<ng-container *ngIf="trips">
-  <app-trip-carousel (tripSelected)="showTripDetail($event)" [trips]="trips"></app-trip-carousel>
-</ng-container>
+<app-trip-carousel (tripSelected)="showTripDetail($event)"></app-trip-carousel>
 
 <ng-container *ngIf="tripSelected">
   <app-trip-detail [tripSelected]="tripSelected"></app-trip-detail>

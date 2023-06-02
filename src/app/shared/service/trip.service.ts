@@ -42,6 +42,7 @@ export class TripService {
   }
 
   delete(title: string) {
-
+    return this.httpService
+      .delete(EndPoints.TRIPS + '/' + title);
   }
 }
