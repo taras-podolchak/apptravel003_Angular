@@ -13,8 +13,8 @@ import {Role} from "../model/role.model";
   providedIn: 'root'
 })
 export class AuthService {
-  static END_POINT_REGISTER = environment.REST_USER + '/users';
-  static END_POINT_LOGIN = environment.REST_USER + '/users/token';
+  static END_POINT_REGISTER = environment.REST_APPTRAVEL003_SPRING_BOOT + '/users';
+  static END_POINT_LOGIN = environment.REST_APPTRAVEL003_SPRING_BOOT + '/users/token';
   private user: User;
 
   constructor(private httpService: HttpService, private router: Router) {
@@ -52,7 +52,7 @@ export class AuthService {
 
   logout(): void {
     this.user = undefined;
-    this.router.navigate(['']).then();
+    this.router.navigate(['/']).then();
   }
 
   isAuthenticated(): boolean {

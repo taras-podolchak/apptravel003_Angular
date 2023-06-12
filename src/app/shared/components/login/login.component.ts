@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
 import {AuthService} from "../../service/auth.service";
@@ -11,7 +11,7 @@ import {Role} from "../../model/role.model";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   formGroup: FormGroup;
   private searchTimeout!: number;
@@ -26,9 +26,6 @@ export class LoginComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
     });
-  }
-
-  ngOnInit(): void {
   }
 
   login(formGroup: FormGroup) {

@@ -14,7 +14,7 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <div class="col-4" *ngFor="let activity of (tripSelected|async)?.activityList;">
         <div class="card h-25">
-          <a href="{{activity.wikiloc}}" target="_blank">
+          <a href="{{activity.wikiloc}}" target="_blank" rel="noopener">
             <img class="card-img-top" src="./assets/img/images/actividades/{{activity.photoActivity}}.jpg"
                  alt="Card image cap">
             <div class="card-body">

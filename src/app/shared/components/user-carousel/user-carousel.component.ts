@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Observable} from "rxjs";
 import {Trip} from "../../model/trip.model";
 
@@ -7,13 +7,8 @@ import {Trip} from "../../model/trip.model";
   templateUrl: './user-carousel.component.html',
   styleUrls: ['./user-carousel.component.css']
 })
-export class UserCarouselComponent implements OnInit {
+export class UserCarouselComponent {
 
   @Input() tripSelected: Observable<Trip>;
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 }

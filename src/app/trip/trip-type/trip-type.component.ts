@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-trip-type',
@@ -6,15 +6,9 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./trip-type.component.css']
 })
 
-export class TripTypeComponent implements OnInit {
+export class TripTypeComponent {
   @Output() tripTypeSelected: EventEmitter<number> = new EventEmitter();
   selectedTripType: number;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 
   showCarouselComponent(): void {
     this.tripTypeSelected.emit(this.selectedTripType);
