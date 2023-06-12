@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, SimpleChanges, ViewChild} from '@angular/core';
 import {Observable, timer} from "rxjs";
 import {Trip} from "../../model/trip.model";
 
@@ -7,16 +7,10 @@ import {Trip} from "../../model/trip.model";
   templateUrl: './trip-detail.component.html',
   styleUrls: ['./trip-detail.component.css']
 })
-export class TripDetailComponent implements OnInit {
+export class TripDetailComponent {
 
   @Input() tripSelected: Observable<Trip>;
   @ViewChild("detail") MyProp: ElementRef;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tripSelected']) {

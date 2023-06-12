@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
@@ -11,7 +11,7 @@ import {AuthService} from "../../service/auth.service";
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
   formGroup: FormGroup;
   validPasswords = false;
@@ -35,9 +35,6 @@ export class RegisterComponent implements OnInit {
       password_1: new FormControl('', [Validators.required, Validators.minLength(6)]),
       password_2: new FormControl('', [Validators.required]),
     });
-  }
-
-  ngOnInit(): void {
   }
 
   register(form: FormGroup) {

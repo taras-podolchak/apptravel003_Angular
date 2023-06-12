@@ -8,9 +8,7 @@ export const environment = {
   production: false,
   NAME: pkg.name,
   VERSION: pkg.version,
-  REST_USER: 'http://localhost:8080',
-  REST_CORE: 'http://localhost:8080',
-  REST_CUSTOMER_SUPPORT: 'http://localhost:8083'
+  REST_APPTRAVEL003_SPRING_BOOT: 'http://localhost:8080',
 };
 
 /*

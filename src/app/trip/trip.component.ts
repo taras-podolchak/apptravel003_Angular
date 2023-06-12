@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Observable} from "rxjs";
 import {TripService} from "../shared/service/trip.service";
 import {Trip} from "../shared/model/trip.model";
@@ -8,7 +8,7 @@ import {Trip} from "../shared/model/trip.model";
   templateUrl: './trip.component.html',
   styleUrls: ['./trip.component.css']
 })
-export class TripComponent implements OnInit {
+export class TripComponent {
 
   typeOfTripsSelected: number;
   tripSelected: Observable<Trip>;
@@ -16,9 +16,6 @@ export class TripComponent implements OnInit {
   constructor(
     private tripService: TripService,
   ) {
-  }
-
-  ngOnInit(): void {
   }
 
   showAvailableTrips(event: number): void {

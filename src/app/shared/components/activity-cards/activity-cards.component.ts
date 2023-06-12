@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Observable} from "rxjs";
 import {Trip} from "../../model/trip.model";
 
@@ -7,13 +7,8 @@ import {Trip} from "../../model/trip.model";
   templateUrl: './activity-cards.component.html',
   styleUrls: ['./activity-cards.component.css']
 })
-export class ActivityCardsComponent implements OnInit {
+export class ActivityCardsComponent {
 
   @Input() tripSelected: Observable<Trip>;
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 }

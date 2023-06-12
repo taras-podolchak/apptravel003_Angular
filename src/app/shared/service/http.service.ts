@@ -131,7 +131,6 @@ export class HttpService {
     let error: Error;
     if (response.status === HttpService.UNAUTHORIZED) {
       this.showError('Unauthorized');
-      //  this.router.navigate(['']).then();
       return EMPTY;
     } else if (response.status === HttpService.CONNECTION_REFUSE) {
       this.showError('Connection Refuse');
