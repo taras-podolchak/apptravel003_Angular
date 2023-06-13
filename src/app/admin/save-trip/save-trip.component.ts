@@ -46,7 +46,7 @@ export class SaveTripComponent implements OnInit {
       this.formErrors = {};
       for (const field in data) {
         const control = this.formGroup.get(field);
-        if (control && control.dirty && control.invalid) {
+        if (control.dirty && control.invalid) {
           this.formErrors[field] = true;
         }
       }
