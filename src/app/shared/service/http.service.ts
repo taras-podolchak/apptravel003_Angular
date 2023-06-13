@@ -20,8 +20,7 @@ export class HttpService {
   private errorNotification: string | undefined;
 
   constructor(private http: HttpClient,
-              private toast: ToastrService,
-              private router: Router) {
+              private toast: ToastrService) {
     this.resetOptions();
   }
 

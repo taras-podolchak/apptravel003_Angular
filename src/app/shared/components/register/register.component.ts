@@ -97,7 +97,7 @@ export class RegisterComponent {
   passwordValidator(formGroup: FormGroup) {
     clearTimeout(this.searchTimeout2);
     this.searchTimeout2 = window.setTimeout(() => {
-      if (this.formGroup.get('password_1').hasError('minlength')) {
+      if (formGroup.get('password_1').hasError('minlength')) {
         this.toastr.error('La contraseña debe tener al menos 6 caracteres', 'Error!');
       }
     }, 1000);
