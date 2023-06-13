@@ -33,7 +33,8 @@ export class TripCarouselComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['trips']) {
+    if (changes['typeOfTripsSelected']) {
+      this.search();
       this.ngAfterViewInit();
     }
   }
@@ -46,7 +47,7 @@ export class TripCarouselComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    timer(100).subscribe(() => {
+    timer(1500).subscribe(() => {
       if (this.MyProp) {
         this.MyProp.nativeElement.scrollIntoView({behavior: "smooth", block: "start"});
       }

@@ -19,7 +19,7 @@ export class TripDetailComponent {
   }
 
   ngAfterViewInit() {
-    timer(100).subscribe(() => {
+    timer(1500).subscribe(() => {
       if (this.MyProp) {
         this.MyProp.nativeElement.scrollIntoView({behavior: "smooth", block: "start"});
       }
