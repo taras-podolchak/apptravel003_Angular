@@ -1,0 +1,17 @@
+name: Heroku Deployment
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    name: Heroku Deployment
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with: { fetch-depth: 0 }
+      - uses: akhileshns/heroku-deploy@v3.6.8
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "apptravel003-angular"
+          heroku_email: "taraspodolchak@gmail.com"

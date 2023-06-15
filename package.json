@@ -1,12 +1,10 @@
 {
   "name": "apptravel003-angular",
-  "version": "0.0.0",
+  "version": "1.0.0+RELEASE",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "heroku-postbuild": "ng build",
+    "build-prod": "ng build",
+    "start": "node server.js"
   },
   "private": true,
   "dependencies": {
@@ -15,6 +13,7 @@
     "@angular/compiler": "^15.2.0",
     "@angular/core": "^15.2.0",
     "@angular/forms": "^15.2.0",
+    "@angular/material": "^7.3.7",
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
@@ -23,6 +22,7 @@
     "@popperjs/core": "^2.11.7",
     "angular-jwt": "^0.1.11",
     "bootstrap": "^5.2.3",
+    "express": "^4.18.2",
     "jquery": "^3.6.4",
     "ngx-toastr": "^16.1.1",
     "rxjs": "~7.8.0",
