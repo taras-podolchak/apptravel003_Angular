@@ -1,6 +1,6 @@
 {
   "name": "apptravel003-angular",
-  "version": "1.0.0+RELEASE",
+  "version": "1.0.0-RELEASE",
   "scripts": {
     "heroku-postbuild": "ng build",
     "build-prod": "ng build",
